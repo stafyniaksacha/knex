@@ -1,4 +1,4 @@
-import{_ as n,c as s,o as a,a as e}from"./app.27b6a31c.js";const g='{"title":"Migrations","description":"","frontmatter":{},"headers":[{"level":2,"title":"Migration CLI","slug":"migration-cli"},{"level":2,"title":"Seed files","slug":"seed-files"},{"level":3,"title":"Seed CLI","slug":"seed-cli"},{"level":2,"title":"knexfile.js","slug":"knexfile-js"},{"level":3,"title":"Basic configuration","slug":"basic-configuration"},{"level":3,"title":"Environment configuration","slug":"environment-configuration"},{"level":3,"title":"Custom migration","slug":"custom-migration"},{"level":3,"title":"Generated migration extension","slug":"generated-migration-extension"},{"level":3,"title":"Knexfile in other languages","slug":"knexfile-in-other-languages"},{"level":2,"title":"Migration API","slug":"migration-api"},{"level":3,"title":"Transactions in migrations","slug":"transactions-in-migrations"},{"level":3,"title":"make","slug":"make"},{"level":3,"title":"latest","slug":"latest"},{"level":3,"title":"rollback","slug":"rollback"},{"level":3,"title":"up","slug":"up"},{"level":3,"title":"down","slug":"down"},{"level":3,"title":"currentVersion","slug":"currentversion"},{"level":3,"title":"list","slug":"list"},{"level":3,"title":"unlock","slug":"unlock"},{"level":2,"title":"Notes about locks","slug":"notes-about-locks"},{"level":2,"title":"Custom migration sources","slug":"custom-migration-sources"},{"level":3,"title":"Webpack migration source example","slug":"webpack-migration-source-example"},{"level":2,"title":"ECMAScript modules (ESM) Interoperability","slug":"ecmascript-modules-esm-interoperability"},{"level":2,"title":"Seed API","slug":"seed-api"},{"level":3,"title":"make","slug":"make-1"},{"level":3,"title":"run","slug":"run"},{"level":2,"title":"Custom seed sources","slug":"custom-seed-sources"}],"relativePath":"guide/migrations.md"}',t={},o=e(`<h1 id="migrations" tabindex="-1">Migrations <a class="header-anchor" href="#migrations" aria-hidden="true">#</a></h1><p>Migrations allow for you to define sets of schema changes so upgrading a database is a breeze.</p><h2 id="migration-cli" tabindex="-1">Migration CLI <a class="header-anchor" href="#migration-cli" aria-hidden="true">#</a></h2><p>The migration CLI is bundled with the knex install, and is driven by the <a href="https://github.com/tkellen/node-liftoff" target="_blank" rel="noopener noreferrer">node-liftoff</a> module. To install globally, run:</p><div class="language-bash"><pre><code>$ <span class="token function">npm</span> <span class="token function">install</span> knex -g
+import{_ as n,c as a,o as s,a as e}from"./app.553ae145.js";const g='{"title":"Migrations","description":"","frontmatter":{},"headers":[{"level":2,"title":"Migration CLI","slug":"migration-cli"},{"level":2,"title":"Seed files","slug":"seed-files"},{"level":3,"title":"Seed CLI","slug":"seed-cli"},{"level":2,"title":"knexfile.js","slug":"knexfile-js"},{"level":3,"title":"Basic configuration","slug":"basic-configuration"},{"level":3,"title":"Environment configuration","slug":"environment-configuration"},{"level":3,"title":"Custom migration","slug":"custom-migration"},{"level":3,"title":"Generated migration extension","slug":"generated-migration-extension"},{"level":3,"title":"Knexfile in other languages","slug":"knexfile-in-other-languages"},{"level":2,"title":"Migration API","slug":"migration-api"},{"level":3,"title":"Transactions in migrations","slug":"transactions-in-migrations"},{"level":3,"title":"make","slug":"make"},{"level":3,"title":"latest","slug":"latest"},{"level":3,"title":"rollback","slug":"rollback"},{"level":3,"title":"up","slug":"up"},{"level":3,"title":"down","slug":"down"},{"level":3,"title":"currentVersion","slug":"currentversion"},{"level":3,"title":"list","slug":"list"},{"level":3,"title":"unlock","slug":"unlock"},{"level":2,"title":"Notes about locks","slug":"notes-about-locks"},{"level":2,"title":"Custom migration sources","slug":"custom-migration-sources"},{"level":3,"title":"Webpack migration source example","slug":"webpack-migration-source-example"},{"level":2,"title":"ECMAScript modules (ESM) Interoperability","slug":"ecmascript-modules-esm-interoperability"},{"level":2,"title":"Seed API","slug":"seed-api"},{"level":3,"title":"make","slug":"make-1"},{"level":3,"title":"run","slug":"run"},{"level":2,"title":"Custom seed sources","slug":"custom-seed-sources"}],"relativePath":"guide/migrations.md"}',t={},o=e(`<h1 id="migrations" tabindex="-1">Migrations <a class="header-anchor" href="#migrations" aria-hidden="true">#</a></h1><p>Migrations allow for you to define sets of schema changes so upgrading a database is a breeze.</p><h2 id="migration-cli" tabindex="-1">Migration CLI <a class="header-anchor" href="#migration-cli" aria-hidden="true">#</a></h2><p>The migration CLI is bundled with the knex install, and is driven by the <a href="https://github.com/tkellen/node-liftoff" target="_blank" rel="noopener noreferrer">node-liftoff</a> module. To install globally, run:</p><div class="language-bash"><pre><code>$ <span class="token function">npm</span> <span class="token function">install</span> knex -g
 </code></pre></div><p>The migration CLI accepts the following general command-line options. You can view help text and additional options for each command using <code>--help</code>. E.g. <code>knex migrate:latest --help</code>.</p><ul><li><code>--debug</code>: Run with debugging</li><li><code>--knexfile [path]</code>: Specify the knexfile path</li><li><code>--knexpath [path]</code>: Specify the path to the knex instance</li><li><code>--cwd [path]</code>: Specify the working directory</li><li><code>--client [name]</code>: Set the DB client</li><li><code>--connection [address]</code>: Set the DB connection</li><li><code>--migrations-table-name</code>: Set the migration table name</li><li><code>--migrations-directory</code>: Set the migrations directory</li><li><code>--env</code>: environment, default: <code>process.<wbr>env.NODE\\_ENV || development</code></li><li><code>--esm</code>: <a href="#esm-interop">Enables ESM module interoperability</a></li><li><code>--help</code>: Display help text for a particular command and exit.</li></ul><p>Migrations use a <strong>knexfile</strong>, which specify various configuration settings for the module. To create a new knexfile, run the following:</p><div class="language-bash"><pre><code>$ knex init
 
 <span class="token comment"># or for .ts</span>
@@ -28,15 +28,19 @@ $ <span class="token assign-left variable">NODE_ENV</span><span class="token ope
 </code></pre></div><p>To undo the specified migration that was run</p><div class="language-bash"><pre><code>$ knex migrate:down 001_migration_name.js
 </code></pre></div><p>To list both completed and pending migrations:</p><div class="language-bash"><pre><code>$ knex migrate:list
 </code></pre></div><h2 id="seed-files" tabindex="-1">Seed files <a class="header-anchor" href="#seed-files" aria-hidden="true">#</a></h2><p>Seed files allow you to populate your database with test or seed data independent of your migration files.</p><h3 id="seed-cli" tabindex="-1">Seed CLI <a class="header-anchor" href="#seed-cli" aria-hidden="true">#</a></h3><p>To create a seed file, run:</p><div class="language-bash"><pre><code>$ knex seed:make seed_name
-</code></pre></div><p>Seed files are created in the directory specified in your knexfile.js for the current environment. A sample seed configuration looks like:</p><div class="language-js"><pre><code><span class="token literal-property property">development</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token operator">...</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">connection</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">seeds</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./seeds/dev&#39;</span>
+</code></pre></div><p>Seed files are created in the directory specified in your knexfile.js for the current environment. A sample seed configuration looks like:</p><div class="language-js"><pre><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token literal-property property">development</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">connection</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">seeds</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./seeds/dev&#39;</span>
+    <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+  <span class="token comment">// ...</span>
+  <span class="token punctuation">}</span>
 </code></pre></div><p>If no <code>seeds.directory</code> is defined, files are created in <code>./seeds</code>. Note that the seed directory needs to be a relative path. Absolute paths are not supported (nor is it good practice).</p><p>To run seed files, execute:</p><div class="language-bash"><pre><code>$ knex seed:run
-</code></pre></div><p>Seed files are executed in alphabetical order. Unlike migrations, <em>every</em> seed file will be executed when you run the command. You should design your seed files to reset tables as needed before inserting data.</p><p>To run specific seed files, execute:</p><div class="language-bash"><pre><code>    $ knex seed:run --specific<span class="token operator">=</span>seed-filename.js --specific<span class="token operator">=</span>another-seed-filename.js
+</code></pre></div><p>Seed files are executed in alphabetical order. Unlike migrations, <em>every</em> seed file will be executed when you run the command. You should design your seed files to reset tables as needed before inserting data.</p><p>To run specific seed files, execute:</p><div class="language-bash"><pre><code>$ knex seed:run --specific<span class="token operator">=</span>seed-filename.js --specific<span class="token operator">=</span>another-seed-filename.js
 </code></pre></div><h2 id="knexfile-js" tabindex="-1">knexfile.js <a class="header-anchor" href="#knexfile-js" aria-hidden="true">#</a></h2><p>A knexfile.js generally contains all of the configuration for your database. It can optionally provide different configuration for different environments. You may pass a <code>--knexfile</code> option to any of the command line statements to specify an alternate path to your knexfile.</p><h3 id="basic-configuration" tabindex="-1">Basic configuration <a class="header-anchor" href="#basic-configuration" aria-hidden="true">#</a></h3><div class="language-js"><pre><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token string">&#39;pg&#39;</span><span class="token punctuation">,</span>
   <span class="token literal-property property">connection</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DATABASE_URL</span> <span class="token operator">||</span> <span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token string">&#39;me&#39;</span><span class="token punctuation">,</span> <span class="token literal-property property">database</span><span class="token operator">:</span> <span class="token string">&#39;my_app&#39;</span> <span class="token punctuation">}</span>
@@ -121,8 +125,8 @@ exports<span class="token punctuation">.</span>config <span class="token operato
     <span class="token keyword">switch</span><span class="token punctuation">(</span>migration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">case</span> <span class="token string">&#39;migration1&#39;</span><span class="token operator">:</span>
         <span class="token keyword">return</span> <span class="token punctuation">{</span>
-          <span class="token function">up</span><span class="token punctuation">(</span><span class="token parameter">knex</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
-          <span class="token function">down</span><span class="token punctuation">(</span><span class="token parameter">knex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+          <span class="token function">up</span><span class="token punctuation">(</span><span class="token parameter">knex</span><span class="token punctuation">)</span>   <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token function">down</span><span class="token punctuation">(</span><span class="token parameter">knex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
@@ -163,84 +167,84 @@ knex<span class="token punctuation">.</span>migrate<span class="token punctuatio
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre></div><h2 id="ecmascript-modules-esm-interoperability" tabindex="-1">ECMAScript modules (ESM) Interoperability <a class="header-anchor" href="#ecmascript-modules-esm-interoperability" aria-hidden="true">#</a></h2><p>ECMAScript Module support for knex CLI&#39;s configuration, migration and seeds<br> enabled by the <code>--esm</code> flag, ECMAScript Interoperability is provided by the <a href="https://github.com/standard-things/esm" target="_blank" rel="noopener noreferrer"><em>&#39;esm&#39;</em></a> module.<br> You can find <a href="https://github.com/standard-things/esm" target="_blank" rel="noopener noreferrer">here</a> more information about &#39;esm&#39; superpowers.</p><p>Node &#39;mjs&#39; files are handled by NodeJS own import mechanics<br> and do not require the use of the &#39;--esm&#39; flag.<br> But you might need it anyway for Node v10 under certain scenarios.<br> You can find details about NodeJS ECMAScript modules <a href="https://nodejs.org/api/esm.html" target="_blank" rel="noopener noreferrer">here</a></p><p>While it is possible to mix and match different module formats (extensions)<br> between your knexfile, seeds and migrations,<br> some format combinations will require specific NodeJS versions,<br><em>Notably mjs/cjs files will follow NodeJS import and require restrictions.</em><br> You can see <a href="https://github.com/knex/knex/blob/master/test/cli/esm-interop.spec.js" target="_blank" rel="noopener noreferrer">here</a> many possible scenarios,<br> and <a href="https://github.com/knex/knex/tree/master/test/jake-util/knexfile-imports" target="_blank" rel="noopener noreferrer">here</a> some sample configurations</p><p>Node v10.* require the use of the &#39;--experimental-module&#39; flag in order to use the &#39;mjs&#39; or &#39;cjs&#39; extension.</p><div class="language-bash"><pre><code><span class="token comment"># launching knex on Node v10 to use mjs/cjs modules</span>
 <span class="token function">node</span> --experimental-modules ./node_modules/.bin/knex <span class="token variable">$@</span>
-</code></pre></div><p>When using migration and seed files with &#39;.cjs&#39; or &#39;.mjs&#39; extensions, you will need to specify that explicitly:</p><div class="language-js"><pre><code><span class="token comment">/* 
-  * knexfile.mjs
-  */</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>      
-  <span class="token literal-property property">migrations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// ... client, connection,etc .... </span>
-    <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./migrations&#39;</span><span class="token punctuation">,</span>
-    <span class="token literal-property property">loadExtensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&#39;.mjs&#39;</span><span class="token punctuation">]</span> <span class="token comment">// </span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>When using &#39;.mjs&#39; extensions for your knexfile and &#39;.js&#39; for the seeds/migrations, you will need to specify that explicitly.</p><div class="language-js"><pre><code><span class="token comment">/* 
-  * knexfile.mjs
-  */</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>      
-  <span class="token literal-property property">migrations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// ... client, connection,etc .... </span>
-    <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./migrations&#39;</span><span class="token punctuation">,</span>
-    <span class="token literal-property property">loadExtensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&#39;.js&#39;</span><span class="token punctuation">]</span> <span class="token comment">// knex will search for &#39;mjs&#39; file by default</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>For the knexfile you can use a default export,<br> it will take precedence over named export.</p><div class="language-js"><pre><code><span class="token comment">/**
+</code></pre></div><p>When using migration and seed files with &#39;.cjs&#39; or &#39;.mjs&#39; extensions, you will need to specify that explicitly:</p><div class="language-mjs"><pre><code>/** 
+ * knexfile.mjs
+ */
+export default {      
+  migrations: {
+    // ... client, connection,etc .... 
+    directory: &#39;./migrations&#39;,
+    loadExtensions: [&#39;.mjs&#39;] // 
+  }
+}
+</code></pre></div><p>When using &#39;.mjs&#39; extensions for your knexfile and &#39;.js&#39; for the seeds/migrations, you will need to specify that explicitly.</p><div class="language-mjs"><pre><code>/** 
+ * knexfile.mjs
+ */
+export default {      
+  migrations: {
+    // ... client, connection,etc .... 
+    directory: &#39;./migrations&#39;,
+    loadExtensions: [&#39;.js&#39;] // knex will search for &#39;mjs&#39; file by default
+  }
+}
+</code></pre></div><p>For the knexfile you can use a default export,<br> it will take precedence over named export.</p><div class="language-mjs"><pre><code>/**
  * filename: knexfile.js
  * For the knexfile you can use a default export
- **/</span>        
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token string">&#39;sqlite3&#39;</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">connection</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">&#39;../test.sqlite3&#39;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">migrations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./migrations&#39;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">seeds</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./seeds&#39;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+ **/        
+export default {
+  client: &#39;sqlite3&#39;,
+  connection: {
+    filename: &#39;../test.sqlite3&#39;,
+  },
+  migrations: {
+    directory: &#39;./migrations&#39;,
+  },
+  seeds: {
+    directory: &#39;./seeds&#39;,
+  },
+}
 
-<span class="token comment">/**
+/**
  * filename: knexfile.js
  * Let knex find the configuration by providing named exports,
  * but if exported a default, it will take precedence, and it will be used instead
- **/</span>
-<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token string">&#39;sqlite3&#39;</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">connection</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">&#39;../test.sqlite3&#39;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">migrations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./migrations&#39;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">seeds</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">&#39;./seeds&#39;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token comment">/** this will be used, it has precedence over named export */</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> config<span class="token punctuation">;</span>
-<span class="token comment">/** Named exports, will be used if you didn&#39;t provide a default export */</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> client<span class="token punctuation">,</span> connection<span class="token punctuation">,</span> migrations<span class="token punctuation">,</span> seeds <span class="token punctuation">}</span> <span class="token operator">=</span> config<span class="token punctuation">;</span>
-</code></pre></div><p>Seed and migration files need to follow Knex conventions</p><div class="language-js"><pre><code><span class="token comment">// file: seed.js</span>
-<span class="token comment">/** 
+ **/
+const config = {
+  client: &#39;sqlite3&#39;,
+  connection: {
+    filename: &#39;../test.sqlite3&#39;,
+  },
+  migrations: {
+    directory: &#39;./migrations&#39;,
+  },
+  seeds: {
+    directory: &#39;./seeds&#39;,
+  },
+};
+/** this will be used, it has precedence over named export */
+export default config;
+/** Named exports, will be used if you didn&#39;t provide a default export */
+export const { client, connection, migrations, seeds } = config;
+</code></pre></div><p>Seed and migration files need to follow Knex conventions</p><div class="language-mjs"><pre><code>// file: seed.js
+/** 
  * Same as with the CommonJS modules
  * You will need to export a &quot;seed&quot; named function.
- * */</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">seed</span><span class="token punctuation">(</span><span class="token parameter">next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ... seed logic here</span>
-<span class="token punctuation">}</span>
+ * */
+export function seed(next) {
+  // ... seed logic here
+}
 
-<span class="token comment">// file: migration.js</span>
-<span class="token comment">/** 
+// file: migration.js
+/** 
  * Same as the CommonJS version, the miration file should export 
  * &quot;up&quot; and &quot;down&quot; named functions
- */</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">up</span><span class="token punctuation">(</span><span class="token parameter">knex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// ... migration logic here</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">down</span><span class="token punctuation">(</span><span class="token parameter">knex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token comment">// ... migration logic here</span>
-<span class="token punctuation">}</span>
+ */
+export function up(knex) {
+  // ... migration logic here
+}
+export function down(knex) {
+// ... migration logic here
+}
 </code></pre></div><h2 id="seed-api" tabindex="-1">Seed API <a class="header-anchor" href="#seed-api" aria-hidden="true">#</a></h2><p><code>knex.seed</code> is the class utilized by the knex seed CLI.</p><p>Each method takes an optional <code>config</code> object, which may specify the following properties:</p><ul><li><code>directory</code>: a relative path to the directory containing the seed files. Can be an array of paths (default <code>./seeds</code>)</li><li><code>loadExtensions</code>: array of file extensions which knex will treat as seeds. For example, if you have typescript transpiled into javascript in the same folder, you want to execute only javascript seeds. In this case, set <code>loadExtensions</code> to <code>[&#39;.js&#39;]</code> (Notice the dot!) (default <code>[&#39;.co&#39;, &#39;.coffee&#39;, &#39;.eg&#39;, &#39;.iced&#39;, &#39;.js&#39;, &#39;.litcoffee&#39;, &#39;.ls&#39;, &#39;.ts&#39;]</code>)</li><li><code>recursive</code>: if true, will find seed files recursively in the directory / directories specified</li><li><code>specific</code>: a specific seed file or an array of seed files to run from the seeds directory, if its value is <code>undefined</code> it will run all the seeds (default <code>undefined</code>). If an array is specified, seed files will be run in the same order as the array</li><li><code>sortDirsSeparately</code>: if true and multiple directories are specified, all seeds from a single directory will be executed before executing seeds in the next folder (default <code>false</code>)</li><li><code>seedSource</code>: specify a custom seed source, see <a href="#custom-seed-sources">Custom Seed Source</a> for more info (default filesystem)</li><li><code>extension</code>: extension to be used for newly generated seeds (default <code>js</code>)</li><li><code>timestampFilenamePrefix</code>: whether timestamp should be added as a prefix for newly generated seeds (default <code>false</code>)</li></ul><h3 id="make-1" tabindex="-1">make <a class="header-anchor" href="#make-1" aria-hidden="true">#</a></h3><p><strong>knex.seed.make(name, [config])</strong></p><p>Creates a new seed file, with the name of the seed file being added. If the seed directory config is an array of paths, the seed file will be generated in the latest specified.</p><h3 id="run" tabindex="-1">run <a class="header-anchor" href="#run" aria-hidden="true">#</a></h3><p><strong>knex.seed.run([config])</strong></p><p>Runs all seed files for the current environment.</p><h2 id="custom-seed-sources" tabindex="-1">Custom seed sources <a class="header-anchor" href="#custom-seed-sources" aria-hidden="true">#</a></h2><p>Knex supports custom seed sources, allowing you full control of where your seeds come from. This can be useful for custom folder structures, when bundling with webpack/browserify and other scenarios.</p><div class="language-js"><pre><code><span class="token comment">// Create a custom seed source class</span>
 <span class="token keyword">class</span> <span class="token class-name">MySeedSource</span> <span class="token punctuation">{</span>
   <span class="token comment">// Must return a Promise containing a list of seeds. </span>
@@ -261,4 +265,4 @@ knex<span class="token punctuation">.</span>migrate<span class="token punctuatio
 
 <span class="token comment">// pass an instance of your seed source as knex config</span>
 knex<span class="token punctuation">.</span>seed<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">seedSource</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">MySeedSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre></div>`,135),p=[o];function c(i,r,l,u,k,d){return a(),s("div",null,p)}var h=n(t,[["render",c]]);export{g as __pageData,h as default};
+</code></pre></div>`,135),p=[o];function i(c,r,l,u,d,k){return s(),a("div",null,p)}var h=n(t,[["render",i]]);export{g as __pageData,h as default};
