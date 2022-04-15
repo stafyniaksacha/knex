@@ -19,7 +19,8 @@ knex<span class="token punctuation">.</span><span class="token function">transac
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>inserts<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">&#39; new books saved.&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// If we get here, that means that neither the &#39;Old Books&#39; catalogues insert,</span>
+  <span class="token comment">// If we get here, that means that </span>
+  <span class="token comment">// neither the &#39;Old Books&#39; catalogues insert,</span>
   <span class="token comment">// nor any of the books inserts will have taken place.</span>
   console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -46,7 +47,8 @@ knex<span class="token punctuation">.</span><span class="token function">transac
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>inserts<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">&#39; new books saved.&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// If we get here, that means that neither the &#39;Old Books&#39; catalogues insert,</span>
+  <span class="token comment">// If we get here, that means that </span>
+  <span class="token comment">// neither the &#39;Old Books&#39; catalogues insert,</span>
   <span class="token comment">// nor any of the books inserts will have taken place.</span>
   console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
