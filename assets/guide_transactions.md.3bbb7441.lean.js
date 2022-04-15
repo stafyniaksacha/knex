@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.eb3a0253.js";const m='{"title":"Transactions","description":"","frontmatter":{},"headers":[],"relativePath":"guide/transactions.md"}',p={},o=t("",27),e=[o];function c(u,l,k,i,r,d){return a(),s("div",null,e)}var f=n(p,[["render",c]]);export{m as __pageData,f as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as i,o as a,a as n}from"./app.eb3a0253.js";const u='{"title":"Migrations","description":"","frontmatter":{},"headers":[{"level":2,"title":"Migration CLI","slug":"migration-cli"}],"relativePath":"guide/migrations.md"}',t={},o=n("",32),s=[o];function r(l,c,d,p,g,h){return a(),i("div",null,s)}var f=e(t,[["render",r]]);export{u as __pageData,f as default};
