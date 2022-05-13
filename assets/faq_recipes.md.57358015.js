@@ -1,4 +1,4 @@
-import{_ as n,c as s,o as a,a as t}from"./app.644ee714.js";const h=`{"title":"Recipes","description":"","frontmatter":{},"headers":[{"level":2,"title":"Using non-standard database that is compatible with PostgreSQL wire protocol (such as CockroachDB)","slug":"using-non-standard-database-that-is-compatible-with-postgresql-wire-protocol-such-as-cockroachdb"},{"level":2,"title":"Connecting to MSSQL on Azure SQL Database","slug":"connecting-to-mssql-on-azure-sql-database"},{"level":2,"title":"Adding a full-text index for PostgreSQL","slug":"adding-a-full-text-index-for-postgresql"},{"level":2,"title":"DB access using SQLite and SQLCipher","slug":"db-access-using-sqlite-and-sqlcipher"},{"level":2,"title":"Maintaining changelog for seeds (version >= 0.16.0-next1)","slug":"maintaining-changelog-for-seeds-version-0-16-0-next1"},{"level":2,"title":"Using explicit transaction management together with async code","slug":"using-explicit-transaction-management-together-with-async-code"},{"level":2,"title":"Using parentheses with AND operator","slug":"using-parentheses-with-and-operator"},{"level":2,"title":"Calling an oracle stored procedure with bindout variables","slug":"calling-an-oracle-stored-procedure-with-bindout-variables"},{"level":2,"title":"Node instance doesn't stop after using knex","slug":"node-instance-doesn-t-stop-after-using-knex"},{"level":2,"title":"Manually Closing Streams","slug":"manually-closing-streams"}],"relativePath":"faq/recipes.md"}`,e={},o=t(`<h1 id="recipes" tabindex="-1">Recipes <a class="header-anchor" href="#recipes" aria-hidden="true">#</a></h1><h2 id="using-non-standard-database-that-is-compatible-with-postgresql-wire-protocol-such-as-cockroachdb" tabindex="-1">Using non-standard database that is compatible with PostgreSQL wire protocol (such as CockroachDB) <a class="header-anchor" href="#using-non-standard-database-that-is-compatible-with-postgresql-wire-protocol-such-as-cockroachdb" aria-hidden="true">#</a></h2><p>Specify PostgreSQL version that database you are using is compatible with protocol-wise using <code>version</code> option, e. g.:</p><div class="language-js"><pre><code><span class="token keyword">const</span> knex <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#39;knex&#39;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+import{_ as n,c as s,o as a,a as t}from"./app.973886cc.js";const h=`{"title":"Recipes","description":"","frontmatter":{},"headers":[{"level":2,"title":"Using non-standard database that is compatible with PostgreSQL wire protocol (such as CockroachDB)","slug":"using-non-standard-database-that-is-compatible-with-postgresql-wire-protocol-such-as-cockroachdb"},{"level":2,"title":"Connecting to MSSQL on Azure SQL Database","slug":"connecting-to-mssql-on-azure-sql-database"},{"level":2,"title":"Adding a full-text index for PostgreSQL","slug":"adding-a-full-text-index-for-postgresql"},{"level":2,"title":"DB access using SQLite and SQLCipher","slug":"db-access-using-sqlite-and-sqlcipher"},{"level":2,"title":"Maintaining changelog for seeds (version >= 0.16.0-next1)","slug":"maintaining-changelog-for-seeds-version-0-16-0-next1"},{"level":2,"title":"Using explicit transaction management together with async code","slug":"using-explicit-transaction-management-together-with-async-code"},{"level":2,"title":"Using parentheses with AND operator","slug":"using-parentheses-with-and-operator"},{"level":2,"title":"Calling an oracle stored procedure with bindout variables","slug":"calling-an-oracle-stored-procedure-with-bindout-variables"},{"level":2,"title":"Node instance doesn't stop after using knex","slug":"node-instance-doesn-t-stop-after-using-knex"},{"level":2,"title":"Manually Closing Streams","slug":"manually-closing-streams"}],"relativePath":"faq/recipes.md"}`,p={},e=t(`<h1 id="recipes" tabindex="-1">Recipes <a class="header-anchor" href="#recipes" aria-hidden="true">#</a></h1><h2 id="using-non-standard-database-that-is-compatible-with-postgresql-wire-protocol-such-as-cockroachdb" tabindex="-1">Using non-standard database that is compatible with PostgreSQL wire protocol (such as CockroachDB) <a class="header-anchor" href="#using-non-standard-database-that-is-compatible-with-postgresql-wire-protocol-such-as-cockroachdb" aria-hidden="true">#</a></h2><p>Specify PostgreSQL version that database you are using is compatible with protocol-wise using <code>version</code> option, e. g.:</p><div class="language-js"><pre><code><span class="token keyword">const</span> knex <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#39;knex&#39;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token literal-property property">client</span><span class="token operator">:</span> <span class="token string">&#39;pg&#39;</span><span class="token punctuation">,</span>
   <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token string">&#39;7.2&#39;</span><span class="token punctuation">,</span>
   <span class="token literal-property property">connection</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -55,35 +55,35 @@ import{_ as n,c as s,o as a,a as t}from"./app.644ee714.js";const h=`{"title":"Re
       <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><h2 id="maintaining-changelog-for-seeds-version-0-16-0-next1" tabindex="-1">Maintaining changelog for seeds (version &gt;= 0.16.0-next1) <a class="header-anchor" href="#maintaining-changelog-for-seeds-version-0-16-0-next1" aria-hidden="true">#</a></h2><p>In case you would like to use Knex.js changelog functionality to ensure your environments are only seeded once, but don&#39;t want to mix seed files with migration files, you can specify multiple directories as a source for your migrations:</p><div class="language-mjs"><pre><code>await knex.migrate.latest({
-    directory: [
-      &#39;src/services/orders/database/migrations&#39;,
-      &#39;src/services/orders/database/seeds&#39;
-    ],
-    sortDirsSeparately: true,
-    tableName: &#39;orders_migrations&#39;,
-    schemaName: &#39;orders&#39;,  
-})
-</code></pre></div><h2 id="using-explicit-transaction-management-together-with-async-code" tabindex="-1">Using explicit transaction management together with async code <a class="header-anchor" href="#using-explicit-transaction-management-together-with-async-code" aria-hidden="true">#</a></h2><div class="language-mjs"><pre><code>await knex.transaction(trx =&gt; {
-  async function stuff() {
-    trx.rollback(new Error(&#39;Foo&#39;));
-  };
-  stuff()
-    .then(() =&gt; {
-      // do something
-    });
-});
-</code></pre></div><p>Or alternatively:</p><div class="language-mjs"><pre><code>try {
-  await knex.transaction(trx =&gt; {
-    async function stuff() {
-      trx.rollback(new Error(&#39;always explicit rollback this time&#39;));
-    }
-    stuff();
-  }); 
-  // transaction was committed
-  } catch (err) {
-    // transaction was rolled back 
-  }
+</code></pre></div><h2 id="maintaining-changelog-for-seeds-version-0-16-0-next1" tabindex="-1">Maintaining changelog for seeds (version &gt;= 0.16.0-next1) <a class="header-anchor" href="#maintaining-changelog-for-seeds-version-0-16-0-next1" aria-hidden="true">#</a></h2><p>In case you would like to use Knex.js changelog functionality to ensure your environments are only seeded once, but don&#39;t want to mix seed files with migration files, you can specify multiple directories as a source for your migrations:</p><div class="language-ts"><pre><code><span class="token keyword">await</span> knex<span class="token punctuation">.</span>migrate<span class="token punctuation">.</span><span class="token function">latest</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    directory<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&#39;src/services/orders/database/migrations&#39;</span><span class="token punctuation">,</span>
+      <span class="token string">&#39;src/services/orders/database/seeds&#39;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    sortDirsSeparately<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    tableName<span class="token operator">:</span> <span class="token string">&#39;orders_migrations&#39;</span><span class="token punctuation">,</span>
+    schemaName<span class="token operator">:</span> <span class="token string">&#39;orders&#39;</span><span class="token punctuation">,</span>  
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="using-explicit-transaction-management-together-with-async-code" tabindex="-1">Using explicit transaction management together with async code <a class="header-anchor" href="#using-explicit-transaction-management-together-with-async-code" aria-hidden="true">#</a></h2><div class="language-ts"><pre><code><span class="token keyword">await</span> knex<span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span>trx <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">stuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&#39;Foo&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token function">stuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// do something</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Or alternatively:</p><div class="language-ts"><pre><code><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> knex<span class="token punctuation">.</span><span class="token function">transaction</span><span class="token punctuation">(</span>trx <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">stuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      trx<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&#39;always explicit rollback this time&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">stuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token comment">// transaction was committed</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// transaction was rolled back </span>
+  <span class="token punctuation">}</span>
 </code></pre></div><p>(note that promise for <code>knex.transaction</code> resolves after transaction is rolled back or committed)</p><h2 id="using-parentheses-with-and-operator" tabindex="-1">Using parentheses with AND operator <a class="header-anchor" href="#using-parentheses-with-and-operator" aria-hidden="true">#</a></h2><p>In order to generate query along the lines of</p><div class="language-sql"><pre><code><span class="token keyword">SELECT</span> <span class="token string">&quot;firstName&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;lastName&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;status&quot;</span>
 <span class="token keyword">FROM</span> <span class="token string">&quot;userInfo&quot;</span> 
 <span class="token keyword">WHERE</span> <span class="token string">&quot;status&quot;</span> <span class="token operator">=</span> <span class="token string">&#39;active&#39;</span>
@@ -94,22 +94,22 @@ import{_ as n,c as s,o as a,a as t}from"./app.644ee714.js";const h=`{"title":"Re
     <span class="token punctuation">.</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">&#39;firstName&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;ilike&#39;</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">%</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>q<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">%</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">orWhere</span><span class="token punctuation">(</span><span class="token string">&#39;lastName&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;ilike&#39;</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">%</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>q<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">%</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span>
   <span class="token punctuation">)</span>
-</code></pre></div><h2 id="calling-an-oracle-stored-procedure-with-bindout-variables" tabindex="-1">Calling an oracle stored procedure with bindout variables <a class="header-anchor" href="#calling-an-oracle-stored-procedure-with-bindout-variables" aria-hidden="true">#</a></h2><p>How to call and retrieve output from an oracle stored procedure</p><div class="language-mjs"><pre><code>const oracle = require(&#39;oracledb&#39;);
-const bindVars = {
-  input_var1: 6,
-  input_var2: 7,
-  output_var: {
-    dir: oracle.BIND_OUT
-  },
-  output_message: {
-    dir: oracle.BIND_OUT
-  }
-};
+</code></pre></div><h2 id="calling-an-oracle-stored-procedure-with-bindout-variables" tabindex="-1">Calling an oracle stored procedure with bindout variables <a class="header-anchor" href="#calling-an-oracle-stored-procedure-with-bindout-variables" aria-hidden="true">#</a></h2><p>How to call and retrieve output from an oracle stored procedure</p><div class="language-ts"><pre><code><span class="token keyword">const</span> oracle <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">&#39;oracledb&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> bindVars <span class="token operator">=</span> <span class="token punctuation">{</span>
+  input_var1<span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+  input_var2<span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+  output_var<span class="token operator">:</span> <span class="token punctuation">{</span>
+    dir<span class="token operator">:</span> oracle<span class="token punctuation">.</span><span class="token constant">BIND_OUT</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output_message<span class="token operator">:</span> <span class="token punctuation">{</span>
+    dir<span class="token operator">:</span> oracle<span class="token punctuation">.</span><span class="token constant">BIND_OUT</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-const sp = &#39;BEGIN MULTIPLY_STORED_PROCEDURE(:input_var1, :input_var2, :output_var, :output_message); END;&#39;;
-const results = await knex.raw(sp, bindVars);
-console.log(results[0]); // 42
-console.log(results[1]); // 6 * 7 is the answer to life
+<span class="token keyword">const</span> sp <span class="token operator">=</span> <span class="token string">&#39;BEGIN MULTIPLY_STORED_PROCEDURE(:input_var1, :input_var2, :output_var, :output_message); END;&#39;</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token keyword">await</span> knex<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span>sp<span class="token punctuation">,</span> bindVars<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>results<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 6 * 7 is the answer to life</span>
 </code></pre></div><h2 id="node-instance-doesn-t-stop-after-using-knex" tabindex="-1">Node instance doesn&#39;t stop after using knex <a class="header-anchor" href="#node-instance-doesn-t-stop-after-using-knex" aria-hidden="true">#</a></h2><p>Make sure to close knex instance after execution to avoid Node process hanging due to open connections:</p><div class="language-js"><pre><code><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">migrate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">try</span> <span class="token punctuation">{</span>
     <span class="token keyword">await</span> knex<span class="token punctuation">.</span>migrate<span class="token punctuation">.</span><span class="token function">latest</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token comment">/**config**/</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -129,4 +129,4 @@ console.log(results[1]); // 6 * 7 is the answer to life
   <span class="token keyword">const</span> stream <span class="token operator">=</span> knex<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">&#39;*&#39;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&#39;items&#39;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   request<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">&#39;close&#39;</span><span class="token punctuation">,</span> stream<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>stream<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div>`,47),p=[o];function c(i,r,l,u,k,d){return a(),s("div",null,p)}var f=n(e,[["render",c]]);export{h as __pageData,f as default};
+</code></pre></div>`,47),o=[e];function c(i,l,u,r,k,d){return a(),s("div",null,o)}var f=n(p,[["render",c]]);export{h as __pageData,f as default};
